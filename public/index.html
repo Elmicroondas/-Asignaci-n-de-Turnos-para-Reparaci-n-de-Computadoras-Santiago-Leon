@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparacion de computadoras - Tickets Activos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Sistema Tickets de Reparacion de computadoras</h1>
+    </header>
+    <main class="contenedor">
+        <section class="formulario">
+            <h2>Nuevo Ticket</h2>
+            <!--Formulario de ingreso de tickets-->
+            <form id="ticketForm">
+                <label for="cliente">Nombre y Apellido:</label>
+                <input type="text" id="cliente" name="cliente" required>
+
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label for="email">Correo Electronico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="modelo">Modelo de computadora:</label>
+                <input type="text" id="modelo" name="modelo" required>
+
+                <label for="problema">Descripcion breve del problema:</label>
+                <textarea id="problema" name="problema" required></textarea>
+
+                <label for="diagnostico">Diagnostico Inicial:</label>
+                <textarea id="diagnostico" name="diagnostico"></textarea>
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <button type="submit">Guardar Ticket</button>
+            </form>
+
+            <a href="historial.html" class="boton-historial">Ver Historial</a>
+        </section>
+
+        <!--Tabla donde van a estar los tickets activos-->
+        <section class="tickets">
+            <h2>Tickets Activos</h2>
+            <table id="ticketsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Modelo</th>
+                        <th>Problema</th>
+                        <th>Diagnóstico</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Aca entran los datos desde la base de datos-->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

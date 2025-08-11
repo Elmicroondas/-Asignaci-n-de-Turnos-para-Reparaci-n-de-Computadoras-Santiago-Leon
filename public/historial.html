@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historial de Tickets</title>
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+  <h1>Historial de Tickets Entregados</h1>
+
+  <table id="historialTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Modelo</th>
+        <th>Problema</th>
+        <th>Diagnóstico</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <br />
+  <a href="index.html"><button>Volver</button></a>
+
+  <script>
+    async function cargarHistorial() {
+      try {
+        const res = await fetch('/api/tickets/historial');
+        const tickets = await res.json();
+
+        const tbody = document.querySelector('#historialTable tbody');
+        tbody.innerHTML = '';
+
+        tickets.forEach(ticket => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${ticket.id}</td>
+            <td>${ticket.cliente}</td>
+            <td>${ticket.telefono}</td>
+            <td>${ticket.email}</td>
+            <td>${ticket.modelo}</td>
+            <td>${ticket.problema}</td>
+            <td>${ticket.diagnostico}</td>
+            <td>${ticket.fecha}</td>
+            <td>${ticket.estado}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error al cargar historial:', error);
+      }
+    }
+
+    window.onload = cargarHistorial;
+  </script>
+</body>
+</html>
